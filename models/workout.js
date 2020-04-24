@@ -39,7 +39,34 @@
 
         }
       ]
-    })
+    });
+
+const opts = { toJSON: { virtuals: true } };
+// const RecipeSchema = new Schema(
+//   {
+//     title: {
+//       type: String,
+//     },
+//     ingredients: [
+//       {
+//         type: Schema.Types.ObjectId,
+//         ref: "Ingredient",
+//       },
+//     ],
+//     timeToCook: {
+//       type: Number,
+//     },
+//     timeToPrepare: {
+//       type: Number,
+//     },
+//   },
+  opts
+// );
+
+workoutSchema.virtual("totalDuration").get(function () {
+  return this.exercises;
+});
+
 
     const Workout = mongoose.model("Workout", workoutSchema);
 
